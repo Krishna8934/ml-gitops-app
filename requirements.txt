@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+scikit_learn
+prometheus_client

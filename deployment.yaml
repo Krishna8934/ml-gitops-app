@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-app-deployment
+  namespace: gitops-project
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ml-app
+  template:
+    metadata:
+      labels:
+        app: ml-app
+    spec:
+      containers:
+      - name: ml-app-container
+        image: krishna23243/ml-gitops-app:v1
+        ports:
+        - containerPort: 8000

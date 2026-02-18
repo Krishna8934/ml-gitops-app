@@ -10,7 +10,6 @@ COPY requirements.txt .
 # Install dependencies
 RUN pip install --no-cache-dir --default-timeout=100 -r requirements.txt
 
-
 # Copy application code
 COPY app ./app
 

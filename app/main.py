@@ -1,10 +1,12 @@
 import logging
+import time
 from fastapi import FastAPI
 from fastapi.responses import Response
-import time
 from prometheus_client import Counter, Histogram, generate_latest
 from .schemas import InputData
 from .model import predict_logic
+
+# ---------------- Logging Configuration ----------------
 
 logging.basicConfig(
     level=logging.INFO,
@@ -13,30 +15,51 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+# ---------------- FastAPI App ----------------
 
 app = FastAPI(title="ML GitOps App")
 
-REQUEST_COUNT = Counter("request_count", "Total API Requests")
-REQUEST_LATENCY = Histogram("request_latency_seconds", "Request latency")
+# ---------------- Prometheus Metrics ----------------
+
+REQUEST_COUNT = Counter(
+    "ml_app_requests_total",
+    "Total number of API requests",
+    ["method", "endpoint"],
+)
+
+REQUEST_LATENCY = Histogram(
+    "ml_app_request_latency_seconds",
+    "Latency of API requests",
+    ["endpoint"],
+)
+
+# ---------------- Routes ----------------
 
 @app.get("/")
 def home():
-   return {"message": "ML GitOps App Running - Version 2 🚀"}
+    return {"message": "ML GitOps App Running - Version 2 🚀"}
+
 
 @app.get("/health")
 def health():
     return {"status": "healthy"}
 
+
 @app.post("/predict")
 def predict(data: InputData):
     logger.info(f"Received prediction request with value: {data.value}")
 
-    REQUEST_COUNT.inc()
+    # Increment request counter
+    REQUEST_COUNT.labels(method="POST", endpoint="/predict").inc()
+
     start_time = time.time()
 
     prediction = predict_logic(data.value)
 
-    REQUEST_LATENCY.observe(time.time() - start_time)
+    # Record latency
+    REQUEST_LATENCY.labels(endpoint="/predict").observe(
+        time.time() - start_time
+    )
 
     logger.info(f"Prediction result: {prediction}")
 

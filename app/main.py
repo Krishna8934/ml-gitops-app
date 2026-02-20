@@ -37,7 +37,7 @@ REQUEST_LATENCY = Histogram(
 
 @app.get("/")
 def home():
-    return {"message": "ML GitOps App Running - Version 2 🚀"}
+    return {"message": "ML GitOps App Running - Version rolling 🚀"}
 
 
 @app.get("/health")

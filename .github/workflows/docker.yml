@@ -33,7 +33,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/ml-gitops-app:${{ steps.vars.outputs.TAG }}
 
-      # 👇 Clone Manifest Repo
+      #  Clone Manifest Repo
       - name: Checkout Manifest Repo
         uses: actions/checkout@v3
         with:
@@ -41,7 +41,7 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           path: manifests
 
-      # 👇 Update deployment.yaml image tag
+      #  Update deployment.yaml image tag
       - name: Update Image Tag
         run: |
           sed -i "s|image:.*|image: ${{ secrets.DOCKER_USERNAME }}/ml-gitops-app:${{ steps.vars.outputs.TAG }}|g" manifests/deployment.yaml

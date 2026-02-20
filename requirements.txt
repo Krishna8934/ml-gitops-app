@@ -1,4 +1,5 @@
 fastapi
-uvicorn
-scikit_learn
-prometheus_client
+uvicorn[standard]
+scikit-learn
+prometheus-client
+jinja2

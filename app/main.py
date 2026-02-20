@@ -1,7 +1,8 @@
 import logging
 import time
-from fastapi import FastAPI
-from fastapi.responses import Response
+from fastapi import FastAPI, Request
+from fastapi.responses import Response, HTMLResponse
+from fastapi.templating import Jinja2Templates
 from prometheus_client import Counter, Histogram, generate_latest
 from .schemas import InputData
 from .model import predict_logic
@@ -19,6 +20,8 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(title="ML GitOps App")
 
+templates = Jinja2Templates(directory="app/templates")
+
 # ---------------- Prometheus Metrics ----------------
 
 REQUEST_COUNT = Counter(
@@ -35,14 +38,22 @@ REQUEST_LATENCY = Histogram(
 
 # ---------------- Routes ----------------
 
-@app.get("/")
-def home():
-    return {"message": "ML GitOps App Running - Version rolling update 🚀"}
+@app.get("/" , response_class=HTMLResponse)
+def home(request: Request):
+    return templates.TemplateResponse("index.html",{"request":request})
 
 
 @app.get("/health")
 def health():
     return {"status": "healthy"}
+
+@app.get("/about")
+def about():
+    return {
+        "developer":"Krishna",
+        "project":"DevOps GitOps Automation  Project",
+        "linkedin" : "https://www.linkedin.com/in/krishna-mishra-cse?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    }
 
 
 @app.post("/predict")

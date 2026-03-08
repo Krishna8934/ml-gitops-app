@@ -1,63 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ML GitOps App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 80px;
-        }
+    <title>ML GitOps Automation Platform</title>
 
-        .button {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 20px;
-            background-color: #0A66C2;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+<style>
 
-        .button:hover {
-            background-color: #084a91;
-        }
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 60px;
+    padding: 0 20px;
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
 
-        .footer {
-            position: fixed;
-            bottom: 15px;
-            width: 100%;
-            text-align: center;
-            font-size: 14px;
-            color: gray;
-        }
+h1 {
+    font-size: 36px;
+    color: #f8fafc;
+}
 
-        .footer a {
-            text-decoration: none;
-            color: #0A66C2;
-            font-weight: bold;
-        }
-    </style>
+.description {
+    max-width: 750px;
+    margin: auto;
+    font-size: 16px;
+    color: #cbd5f5;
+    margin-top: 15px;
+}
+
+.tech {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+.button {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg,#2563eb,#0ea5e9);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.25s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg,#1d4ed8,#0284c7);
+}
+
+.features {
+    margin-top: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.features h3 {
+    text-align: center;
+    color: #38bdf8;
+}
+
+.features ul {
+    line-height: 1.9;
+}
+
+.footer {
+    margin-top: 60px;
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #38bdf8;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+</style>
 </head>
+
 <body>
 
-    <h1>🚀 ML GitOps Automation Project</h1>
-    <p>Production Ready DevOps Pipeline with Kubernetes & ArgoCD</p>
+<h1>🚀 ML GitOps Automation Platform</h1>
 
-    <div>
-        <a class="button" href="/docs">Open API Docs</a>
-        <a class="button" href="/health">Health Check</a>
-        <a class="button" href="/metrics">Metrics</a>
-        
-    </div>
+<p class="description">
+This project demonstrates a production-style DevOps GitOps pipeline for deploying
+a FastAPI machine learning application using Kubernetes. It automates Docker builds,
+CI/CD workflows, GitOps deployments using ArgoCD, and provides real-time monitoring
+through Prometheus and Grafana.
+</p>
 
-    <div class="footer">
-        Built by <strong>Krishna</strong> |
-        <a href="https://www.linkedin.com/in/krishna-mishra-cse" target="_blank">
-            LinkedIn
-        </a>
-    </div>
+<p class="tech">
+Tech Stack: Docker • Kubernetes • ArgoCD • GitHub Actions • FastAPI • Prometheus • Grafana • GitOps
+</p>
+
+<div style="margin-top:30px;">
+
+<a class="button" href="/docs">🚀 Open ML App</a>
+
+<a class="button" href="/health">❤️ Health Check</a>
+
+<a class="button" href="/metrics">📊 Metrics</a>
+
+<a class="button" href="https://github.com/<YOUR_GITHUB_REPO>" target="_blank">
+📂 GitHub Repository
+</a>
+
+<a class="button" href="https://github.com/<YOUR_GITHUB_REPO>#readme" target="_blank">
+📘 Project Documentation
+</a>
+
+</div>
+
+
+<div class="features">
+
+<h3>⚙ DevOps Features</h3>
+
+<ul>
+<li>Automated CI pipeline using GitHub Actions</li>
+<li>Dockerized ML API with container-based deployment</li>
+<li>GitOps-based Kubernetes deployment using ArgoCD</li>
+<li>Rolling updates and self-healing Kubernetes pods</li>
+<li>Real-time observability with Prometheus & Grafana</li>
+<li>Production simulation including load testing and scaling</li>
+</ul>
+
+</div>
+
+
+<div class="footer">
+
+Built by <strong>Krishna Mishra</strong> |
+
+<a href="https://www.linkedin.com/in/krishna-mishra-cse" target="_blank">
+LinkedIn
+</a>
+
+|
+
+<a href="https://github.com/Krishna8934" target="_blank">
+GitHub
+</a>
+
+</div>
 
 </body>
 </html>
